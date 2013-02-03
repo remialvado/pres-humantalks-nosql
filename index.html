@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>NoSQL : How to choose th right one ?</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Rémi Alvado">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Custom styles -->
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section id="introduction">
+					<h1>NoSQL</h1>
+					<h3>How to choose the right one ?</h3>
+					<p>
+						<small><a href="mailto:remi.alvado@gmail.com">Rémi Alvado</a> / <a href="http://twitter.com/remialvado">@remialvado</a> / <a href="http://www.shoppingadventure.fr/">Shopping Adventure</a></small>
+					</p>
+				</section>
+
+				<section id="existing-databases" data-auto-start="1000">
+					<div id="lib-cloud">
+						<a data-next-fragment="400" style="position:absolute; top: 250px; left:135px;" class="fragment roll-in size4" href="http://hadoop.apache.org/">Hadoop / HBase</a>
+						<a data-next-fragment="400" style="position:absolute; top: 330px; left:0px;" class="fragment roll-in size4" href="http://incubator.apache.org/cassandra/">Cassandra</a>
+						<a data-next-fragment="400" style="position:absolute; top: 5px; left:420px;" class="fragment roll-in size4" href="http://code.google.com/p/terrastore/">Terrastore</a>
+						<a data-next-fragment="400" style="position:absolute; top: 90px; left:220px;" class="fragment roll-in size4" href="http://couchdb.apache.org/">CouchDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 330px; left:400px;" class="fragment roll-in size4" href="http://www.mongodb.org/">MongoDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 170px; left:800px;" class="fragment roll-in size4" href="http://redis.io/">Redis</a>
+						<a data-next-fragment="400" style="position:absolute; top: 30px; left:70px;" class="fragment roll-in size3" href="http://aws.amazon.com/simpledb/">Amazon SimpleDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 350px; left:650px;" class="fragment roll-in size3" href="http://www.cloudata.org/">Cloudata</a>
+						<a data-next-fragment="400" style="position:absolute; top: 120px; left:450px;" class="fragment roll-in size3" href="http://www.cloudera.com/">Cloudera</a>
+						<a data-next-fragment="400" style="position:absolute; top: 290px; left:230px;" class="fragment roll-in size3" href="http://www.couchbase.com/">Couchbase Server</a>
+						<a data-next-fragment="400" style="position:absolute; top: 230px; left:10px;" class="fragment roll-in size3" href="http://aws.amazon.com/dynamodb/">DynamoDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 30px; left:600px;" class="fragment roll-in size3" href="http://riak.basho.com/">Riak</a>
+						<a data-next-fragment="400" style="position:absolute; top: 120px; left:20px;" class="fragment roll-in size3" href="http://project-voldemort.com/">Voldemort</a>
+						<a data-next-fragment="400" style="position:absolute; top: 400px; left:600px;" class="fragment roll-in size3" href="http://memcachedb.org/">MemcacheDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 250px; left:450px;" class="fragment roll-in size3" href="http://www.infinitegraph.com/">Infinite Graph</a>
+						<a data-next-fragment="400" style="position:absolute; top: 100px; left:120px;" class="fragment roll-in size2" href="http://www.rediosoft.com/">VaultDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 40px; left:250px;" class="fragment roll-in size2" href="http://hypertable.org/">Hypertable</a>
+						<a data-next-fragment="400" style="position:absolute; top: 10px; left:700px;" class="fragment roll-in size2" href="http://accumulo.apache.org/">Accumulo</a>
+						<a data-next-fragment="400" style="position:absolute; top: 40px; left:770px;" class="fragment roll-in size2" href="http://www.hpccsystems.com/">HPCC</a>
+						<a data-next-fragment="400" style="position:absolute; top: 120px; left:650px;" class="fragment roll-in size2" href="http://www.aerospike.com/">Aerospike</a>
+						<a data-next-fragment="400" style="position:absolute; top: 220px; left:550px;" class="fragment roll-in size2" href="http://code.google.com/p/leveldb/">LevelDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 210px; left:700px;" class="fragment roll-in size2" href="http://msdn.microsoft.com/en-us/library/dd179423.aspx">Azure Table Storage</a>
+						<a data-next-fragment="400" style="position:absolute; top: 205px; left:300px;" class="fragment roll-in size2" href="http://fallabs.com/tokyocabinet/">Tokyo Cabinet / Tyrant</a>
+						<a data-next-fragment="400" style="position:absolute; top: 290px; left:680px;" class="fragment roll-in size2" href="http://www.oracle.com/database/berkeley-db/db/index.html">Berkeley DB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 450px; left:30px;" class="fragment roll-in size2" href="http://highlandsun.com/hyc/mdb/">OpenLDAP</a>
+						<a data-next-fragment="400" style="position:absolute; top: 450px; left:750px;" class="fragment roll-in size2" href="http://www.neo4j.org/">Neo4J</a>
+						<a data-next-fragment="400" style="position:absolute; top: 420px; left:500px;" class="fragment roll-in size2" href="http://www.jboss.org/infinispan.html">Infinispan</a>
+						<a data-next-fragment="400" style="position:absolute; top: 400px; left:350px;" class="fragment roll-in size2" href="http://github.com/twitter/flockdb">FlockDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 440px; left:250px;" class="fragment roll-in size2" href="http://www.oracle.com/database/berkeley-db/xml/index.html">Berkeley DB XML</a>
+						<a data-next-fragment="400" style="position:absolute; top: 380px; left:690px;" class="fragment roll-in size2" href="http://www-01.ibm.com/software/lotus/">IBM Lotus/Domino</a>
+						<a data-next-fragment="400" style="position:absolute; top: 370px; left:300px;" class="fragment roll-in size1" href="http://github.com/ravendb/ravendb">RavenDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 380px; left:130px;" class="fragment roll-in size1" href="http://www.marklogic.com/">MarkLogic Server</a>
+						<a data-next-fragment="400" style="position:absolute; top: 270px; left:600px;" class="fragment roll-in size1" href="http://www.clusterpoint.com/">Clusterpoint Server</a>
+						<a data-next-fragment="400" style="position:absolute; top: 160px; left:0px;" class="fragment roll-in size1" href="http://code.google.com/p/thrudb/">ThruDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 180px; left:110px;" class="fragment roll-in size1" href="http://stratosphere.eu/">Stratosphere</a>
+						<a data-next-fragment="400" style="position:absolute; top: 60px; left:670px;" class="fragment roll-in size1" href="http://www.codeproject.com/Articles/375413/RaptorDB-the-Document-Store">RaptorDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 180px; left:360px;" class="fragment roll-in size1" href="http://www.oberasoftware.com/">JasDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 150px; left:280px;" class="fragment roll-in size1" href="http://www.sisodb.com/">SisoDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 80px; left:430px;" class="fragment roll-in size1" href="http://pagenotes.com/wordpress/2011/12/08/sdb/">SDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 70px; left:530px;" class="fragment roll-in size1" href="http://schemafreedb.com/">SchemaFreeDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 180px; left:570px;" class="fragment roll-in size1" href="http://djondb.com/">djondb</a>
+						<a data-next-fragment="400" style="position:absolute; top: 340px; left:780px;" class="fragment roll-in size1" href="http://ejdb.org/">EJDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 430px; left:800px;" class="fragment roll-in size1" href="http://www.densodb.net/">densodb</a>
+						<a data-next-fragment="400" style="position:absolute; top: 90px; left:30px;" class="fragment roll-in size1" href="http://sourceforge.net/projects/chordless/">Chordless</a>
+						<a data-next-fragment="400" style="position:absolute; top: 50px; left:10px;" class="fragment roll-in size1" href="http://www.geniedb.com/">GenieDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 460px; left:440px;" class="fragment roll-in size1" href="http://code.google.com/p/scalaris/"> Scalaris</a>
+						<a data-next-fragment="400" style="position:absolute; top: 430px; left:180px;" class="fragment roll-in size1" href="http://scalien.com/">Scalien</a>
+						<a data-next-fragment="400" style="position:absolute; top: 290px; left:-10px;" class="fragment roll-in size1" href="http://wiki.github.com/cliffmoon/dynomite/dynomite-framework">Dynomite</a>
+						<a data-next-fragment="400" style="position:absolute; top: 400px; left:-20px;" class="fragment roll-in size1" href="http://sourceforge.net/projects/kai/">KAI</a>
+						<a data-next-fragment="400" style="position:absolute; top: 480px; left:600px;" class="fragment roll-in size1" href="http://www.faircom.com/nosql">Faircom C-Tree</a>
+					</div>
+				</section>
+
+				<section id="heads-up">
+					<h2>Heads Up</h2>
+					<p  data-next-fragment="500" class="fragment roll-in">NoSQL does not mean : </p>
+					<blockquote data-next-fragment="500" class="fragment roll-in">We don't want to work with SQL <strong class="fragment highlight-red">anymore</strong></blockquote>
+					<p data-next-fragment="500" class="fragment roll-in">but : </p>
+					<blockquote data-next-fragment="500" class="fragment roll-in">We don't want to work <strong class="fragment highlight-green">only</strong> with SQL</blockquote>
+				</section>
+
+				<section id="plan-1" >
+					<h2>Main features</h2>
+					<ol>
+						<li class="fragment highlight-pink">Data warehouse</li>
+						<li>Search Engine</li>
+						<li>Big data processing</li>
+					</ol>
+				</section>
+				<section id="storage-format">
+					<h2>Storage Format</h2>
+					<div class="fragment roll-in" id="multi-column-based">
+						<h3>Multi column</h3>
+						<table>
+							<tr>
+								<td>id</td>
+								<td>street</td>
+								<td>postcode</td>
+								<td>city</td>
+							</tr>
+						</table>
+					</div>
+					<div class="fragment roll-in">
+						<h3>Document based</h3>
+						<pre class="fragment fade-out remove" data-next-fragment="200"><code contenteditable class="language-xml">
+&lt;?xml version="1.0" encoding="UTF-8" ?>
+&lt;address>
+  &lt;city postcode="38000">Grenoble</city>
+  &lt;street>85 rue des Alliés</street>
+&lt;/address>
+						</code></pre>
+						<div class="fragment roll-in"><pre class="fragment fade-out remove" data-next-fragment="200"><code contenteditable class="json">
+{
+  "city": {
+    "postcode": "38000",
+    "value" : "Grenoble"
+  },
+  "street": "85 rue des Alliés"
+}
+						</code></pre></div>
+						<pre class="fragment roll-in"><code contenteditable class="yaml">
+address:
+  city:
+    postocode: 38000
+    value: Grenoble
+  street: 85 rue des alliés
+						</code></pre>
+					</div>
+				</section>
+				<section id="data-structure" data-auto-start="1000">
+					<h2>Data structure</h2>
+					<p>Your data are well structured and never mutate ? Prefer <span class="fragment highlight-blue" data-next-fragment="1000">Schema</span> !</p>
+					<p>You data structure is evolving all the time to match new requirements ? Consider <span class="fragment highlight-blue">Schema-less</span> datawarehouses.</p>
+				</section>
+				<section id="master-slave" class="replication">
+					<h2>Data Storage</h2>
+					<h3>Master Slave</h3>
+					<div class="datacenter">
+						<div class="server-group">
+							<div class="server s1">
+								<div class="cell"><span class="color-1 fragment roll-in" data-replicate-in="600" data-replicate-on=".s2 .cell:nth-of-type(1) span">A</span></div>
+								<div class="cell"><span class="color-2 fragment roll-in" data-replicate-in="600" data-replicate-on=".s2 .cell:nth-of-type(2) span" data-next-fragment="1500">B</span></div>
+								<div class="cell"><span class="color-3 fragment roll-in" data-replicate-in="600" data-replicate-on=".s2 .cell:nth-of-type(3) span">C</span></div>
+								<div class="cell"><span class="color-4 fragment roll-in" data-replicate-in="600" data-replicate-on=".s2 .cell:nth-of-type(4) span" data-fragment-custom-event="noSpaceLeft">D</span></div>
+								<div class="cell only-large"><span class="color-5 fragment roll-in" data-replicate-in="600" data-replicate-on=".s2 .cell:nth-of-type(5) span">E</span></div>
+								<caption>S1</caption>
+							</div>
+							<p>Master group</p>
+						</div>
+						<div class="server-group">
+							<div class="server s2">
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s3 .cell:nth-of-type(1) span">A</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s3 .cell:nth-of-type(2) span">B</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s3 .cell:nth-of-type(3) span">C</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s3 .cell:nth-of-type(4) span">D</span></div>
+								<div class="cell only-large"><span class="color-5 fragment roll-in" data-replicate-in="600" data-replicate-on=".s3 .cell:nth-of-type(5) span" data-next-fragment="1500">E</span></div>
+								<caption>S2</caption>
+							</div>
+							<div class="server s3">
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s4 .cell:nth-of-type(1) span">A</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s4 .cell:nth-of-type(2) span">B</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s4 .cell:nth-of-type(3) span">C</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s4 .cell:nth-of-type(4) span">D</span></div>
+								<div class="cell only-large"><span class="color-5 fragment roll-in" data-replicate-in="600" data-replicate-on=".s4 .cell:nth-of-type(5) span" data-next-fragment="1500">E</span></div>
+								<caption>S3</caption>
+							</div>
+							<div class="server s4">
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s5 .cell:nth-of-type(1) span">A</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s5 .cell:nth-of-type(2) span">B</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s5 .cell:nth-of-type(3) span">C</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s5 .cell:nth-of-type(4) span">D</span></div>
+								<div class="cell only-large"><span class="color-5 fragment roll-in" data-replicate-in="600" data-replicate-on=".s5 .cell:nth-of-type(5) span" data-next-fragment="1500">E</span></div>
+								<caption>S4</caption>
+							</div>
+							<div class="server s5">
+								<div class="cell"><span class="invisible">A</span></div>
+								<div class="cell"><span class="invisible">B</span></div>
+								<div class="cell"><span class="invisible">C</span></div>
+								<div class="cell"><span class="invisible">D</span></div>
+								<div class="cell only-large"><span class="invisible">E</span></div>
+								<caption>S5</caption>
+							</div>
+							<p>Slaves group</p>
+						</div>
+					</div>
+				</section>
+				<section id="distributed-with-master" class="replication">
+					<h2>Data Storage</h2>
+					<h3>Distributed with master</h3>
+					<div class="datacenter">
+						<div class="server-group">
+							<div class="server s1">
+								<div class="cell"><span data-fragment-index="1"  class="color-1  fragment roll-in">A</span></div>
+								<div class="cell"><span data-fragment-index="13" class="color-6  fragment roll-in" data-next-fragment="100">M</span></div>
+								<div class="cell"><span data-fragment-index="16" class="color-11 fragment roll-in" data-next-fragment="100"><span class="fragment fade-out" data-next-fragment="300" data-fragment-index="22">P</span></span><span data-fragment-index="29" class="color-9 fragment roll-in" data-next-fragment="100">V</span></div>
+								<div class="cell"><span data-fragment-index="19" class="color-2  fragment roll-in" data-next-fragment="100">S</span></div>
+								<caption>S1</caption>
+							</div>
+							<p>Master group</p>
+						</div>
+						<div class="server-group">
+							<div class="server s2">
+								<div class="cell"><span data-fragment-index="4"  class="color-2  fragment roll-in" data-next-fragment="100">D</span></div>
+								<div class="cell"><span data-fragment-index="7"  class="color-7  fragment roll-in" data-next-fragment="100"><span class="fragment fade-out" data-next-fragment="300" data-fragment-index="24">G</span></span><span data-fragment-index="30" class="color-10 fragment roll-in" data-next-fragment="100">W</span></div>
+								<div class="cell"><span data-fragment-index="9"  class="color-12 fragment roll-in" data-next-fragment="100">I</span></div>
+								<div class="cell"><span data-fragment-index="14" class="color-3  fragment roll-in" data-next-fragment="100">N</span></div>
+								<caption>S2</caption>
+							</div>
+							<div class="server s3">
+								<div class="cell"><span data-fragment-index="2"  class="color-3  fragment roll-in">B</span></div>
+								<div class="cell"><span data-fragment-index="3"  class="color-8  fragment roll-in" data-next-fragment="100"><span class="fragment fade-out" data-next-fragment="300" data-fragment-index="26">C</span></span><span data-fragment-index="31" class="color-11 fragment roll-in">X</span></div>
+								<div class="cell"><span data-fragment-index="12" class="color-13 fragment roll-in" data-next-fragment="100">L</span></div>
+								<div class="cell"><span data-fragment-index="15" class="color-4  fragment roll-in" data-next-fragment="100">O</span></div>
+								<caption>S3</caption>
+							</div>
+							<div class="server s4">
+								<div class="cell"><span data-fragment-index="5"  class="color-4  fragment roll-in" data-next-fragment="100">E</span></div>
+								<div class="cell"><span data-fragment-index="8"  class="color-9  fragment roll-in" data-next-fragment="100">H</span></div>
+								<div class="cell"><span data-fragment-index="11" class="color-14 fragment roll-in" data-next-fragment="100">K</span></div>
+								<div class="cell"><span data-fragment-index="17" class="color-5  fragment roll-in" data-next-fragment="100">Q</span></div>
+								<caption>S4</caption>
+							</div>
+							<div class="server s5">
+								<div class="cell"><span data-fragment-index="6"  class="color-5  fragment roll-in" data-next-fragment="100">F</span></div>
+								<div class="cell"><span data-fragment-index="10" class="color-10 fragment roll-in" data-next-fragment="100">J</span></div>
+								<div class="cell"><span data-fragment-index="18" class="color-1  fragment roll-in" data-next-fragment="100">R</span></div>
+								<div class="cell"><span data-fragment-index="20" class="color-6  fragment roll-in">T</span></div>
+								<caption>S5</caption>
+							</div>
+							<div class="server s6 fragment roll-in" data-fragment-index="21" data-fragment-custom-event="newServer">
+								<div class="cell"><span data-fragment-index="23" class="color-11 fragment roll-in">P</span></div>
+								<div class="cell"><span data-fragment-index="25" class="color-7  fragment roll-in">G</span></div>
+								<div class="cell"><span data-fragment-index="27" class="color-8  fragment roll-in">C</span></div>
+								<div class="cell"><span data-fragment-index="28" class="color-3  fragment roll-in" data-next-fragment="100">U</span></div>
+								<caption>S6</caption>
+							</div>
+							<p>Slaves group</p>
+						</div>
+					</div>
+				</section>
+				<section id="distributed-without-master" class="replication" data-auto-start="1000">
+					<h2>Data Storage</h2>
+					<h3>Distributed without master (<span class="fragment highlight-blue">masterless</span>)</h3>
+					<div class="datacenter">
+						<div class="server-group">
+							<div class="server s1">
+								<div class="cell"><span class="color-1">A</span></div>
+								<div class="cell"><span class="color-6">M</span></div>
+								<div class="cell"><span class="color-9">V</span></div>
+								<div class="cell"><span class="color-2">S</span></div>
+								<caption>S1</caption>
+							</div>
+							<div class="server s2">
+								<div class="cell"><span class="color-2 ">D</span></div>
+								<div class="cell"><span class="color-10">W</span></div>
+								<div class="cell"><span class="color-12">I</span></div>
+								<div class="cell"><span class="color-3 ">N</span></div>
+								<caption>S2</caption>
+							</div>
+							<div class="server s3">
+								<div class="cell"><span class="color-3 ">B</span></div>
+								<div class="cell"><span class="color-11">X</span></div>
+								<div class="cell"><span class="color-13">L</span></div>
+								<div class="cell"><span class="color-4 ">O</span></div>
+								<caption>S3</caption>
+							</div>
+							<div class="server s4">
+								<div class="cell"><span class="color-4 ">E</span></div>
+								<div class="cell"><span class="color-9 ">H</span></div>
+								<div class="cell"><span class="color-14">K</span></div>
+								<div class="cell"><span class="color-5 ">Q</span></div>
+								<caption>S4</caption>
+							</div>
+							<div class="server s5">
+								<div class="cell"><span class="color-5 ">F</span></div>
+								<div class="cell"><span class="color-10">J</span></div>
+								<div class="cell"><span class="color-1 ">R</span></div>
+								<div class="cell"><span class="color-6 ">T</span></div>
+								<caption>S5</caption>
+							</div>
+							<div class="server s6">
+								<div class="cell"><span class="color-11">P</span></div>
+								<div class="cell"><span class="color-7 ">G</span></div>
+								<div class="cell"><span class="color-8 ">C</span></div>
+								<div class="cell"><span class="color-3 ">U</span></div>
+								<caption>S6</caption>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section id="distributed-with-replication" class="replication">
+					<h2>Data Storage</h2>
+					<h3>Distributed with replication</h3>
+					<div class="datacenter">
+						<div class="server-group">
+							<div class="server s1">
+								<div class="cell"><span data-fragment-index="1 " class="color-1  fragment roll-in" data-next-fragment="0">A</span></div>
+								<div class="cell"><span data-fragment-index="11" class="color-6  fragment roll-in" data-next-fragment="0">F</span></div>
+								<div class="cell"><span data-fragment-index="15" class="color-8  fragment roll-in" data-next-fragment="0">H</span></div>
+								<div class="cell"><span data-fragment-index="23" class="color-11 fragment roll-in" data-next-fragment="0">L</span></div>
+								<caption>S1</caption>
+							</div>
+							<div class="server s2">
+								<div class="cell"><span data-fragment-index="3 " class="color-2  fragment roll-in" data-next-fragment="0">B</span></div>
+								<div class="cell"><span data-fragment-index="10" class="color-5  fragment roll-in" data-next-fragment="0">E</span></div>
+								<div class="cell"><span data-fragment-index="18" class="color-9  fragment roll-in" data-next-fragment="0">I</span></div>
+								<div class="cell"><span data-fragment-index="22" class="color-10 fragment roll-in" data-next-fragment="0">K</span></div>
+								<caption>S2</caption>
+							</div>
+							<div class="server s3">
+								<div class="cell"><span data-fragment-index="4 " class="color-2  fragment roll-in">B</span></div>
+								<div class="cell"><span data-fragment-index="2 " class="color-1  fragment roll-in">A</span></div>
+								<div class="cell"><span data-fragment-index="14" class="color-7  fragment roll-in" data-next-fragment="0">G</span></div>
+								<div class="cell"><span data-fragment-index="20" class="color-9  fragment roll-in" data-next-fragment="0">J</span></div>
+								<caption>S3</caption>
+							</div>
+							<div class="server s4">
+								<div class="cell"><span data-fragment-index="12" class="color-6  fragment roll-in" data-next-fragment="0">F</span></div>
+								<div class="cell"><span data-fragment-index="5 " class="color-3  fragment roll-in" data-next-fragment="0">C</span></div>
+								<div class="cell"><span data-fragment-index="19" class="color-9  fragment roll-in" data-next-fragment="0">J</span></div>
+								<div class="cell"><span data-fragment-index="21" class="color-10 fragment roll-in" data-next-fragment="0">K</span></div>
+								<caption>S4</caption>
+							</div>
+							<div class="server s5">
+								<div class="cell"><span data-fragment-index="13" class="color-7  fragment roll-in" data-next-fragment="0">G</span></div>
+								<div class="cell"><span data-fragment-index="6 " class="color-10 fragment roll-in" data-next-fragment="0">J</span></div>
+								<div class="cell"><span data-fragment-index="17" class="color-9  fragment roll-in" data-next-fragment="0">I</span></div>
+								<div class="cell"><span data-fragment-index="7 " class="color-4  fragment roll-in" data-next-fragment="0">D</span></div>
+								<caption>S5</caption>
+							</div>
+							<div class="server s6 fragment fade-out" data-fragment-index="25">
+								<div class="cell"><span data-fragment-index="8 " class="color-4  fragment roll-in" data-next-fragment="0">D</span></div>
+								<div class="cell"><span data-fragment-index="9 " class="color-5  fragment roll-in" data-next-fragment="0">E</span></div>
+								<div class="cell"><span data-fragment-index="16" class="color-8  fragment roll-in" data-next-fragment="0">H</span></div>
+								<div class="cell"><span data-fragment-index="24" class="color-11 fragment roll-in">L</span></div>
+								<caption>S6</caption>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section id="plan-2" data-auto-start="1000">
+					<h2>Main features</h2>
+					<ol>
+						<li>Data warehouse</li>
+						<li class="fragment highlight-pink">Search Engine</li>
+						<li>Big data processing</li>
+					</ol>
+				</section>
+
+				<section id="search-index" data-auto-start="1000">
+					<h2>Search data using an index</h2>
+					<p>Always an access by one primary <span class="fragment highlight-blue" data-next-fragment="1000">key</span>. Key can be user or system defined.</p>
+					<p>Possibility to setup multiple <span class="fragment highlight-blue">secondary indexes</span>. Comes mainly with a storage cost.</p>
+				</section>
+
+				<section id="full-text-search" class="text" data-auto-start="1000">
+					<h2>Real time data search</h2>
+					<p>Only supported by a <span class="fragment highlight-blue" data-next-fragment="500">few NoSQL Engine</span> so far but this is one of the <span class="fragment highlight-blue" data-next-fragment="1000">key feature</span> nearly everyone is working on !</p>
+					<p>Multiple <span class="fragment highlight-blue" data-next-fragment="1000">interface types</span> : SOAP, REST, HTTP, Thrift, Binary, Telnet-like, ...</p>
+					<p>Multiple <span class="fragment highlight-blue" data-next-fragment="1000">query languages</span> : Solr-like, BSon, ...</p>
+					<p>Many supported features : 
+						<ul>
+							<li>Exact matches</li>
+							<li>Wildcard matches</li>
+							<li>Syntaxic proximity</li>
+							<li>Facets</li>
+							<li>Number supports : min, max, range, comparaison, ...</li>
+							<li>...</li>
+						</ul>
+					</p>
+				</section>
+
+				<section id="indexing" class="text" data-auto-start="1000">
+					<h2>Indexing process</h2>
+					<p><span class="fragment highlight-blue" data-next-fragment="1000">Fully manual</span> : developers are using an indexer API to define what should be indexed</p>
+					<p><span class="fragment highlight-blue" data-next-fragment="1000">Schema driven</span> : a data schema is helping the NoSQL database to perform indexation</p>
+					<p><span class="fragment highlight-blue" data-next-fragment="1000">Automatic</span> : the NoSQL database tries to guess what is the best type for each element (column or node)</p>
+					<p><span class="fragment highlight-blue" data-next-fragment="500">Synchrone</span> or <span class="fragment highlight-blue" data-next-fragment="1000">Asychrone</span></p>
+					<p><span class="fragment highlight-blue" data-next-fragment="500">Near realtime</span> (less than 20ms) or... <span class="fragment highlight-blue">quite slow</span> (more than 3-4 seconds)</p>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Vertical Slides</h2>
+						<p>
+							Slides can be nested inside of other slides,
+							try pressing <a href="#" class="navigate-down">down</a>.
+						</p>
+						<a href="#" class="image navigate-down">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+						<h2>Basement Level 1</h2>
+						<p>Press down or up to navigate.</p>
+					</section>
+					<section>
+						<h2>Basement Level 2</h2>
+						<p>Cornify</p>
+						<a class="test" href="http://cornify.com">
+							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
+						</a>
+					</section>
+					<section>
+						<h2>Basement Level 3</h2>
+						<p>That's it, time to go back up.</p>
+						<a href="#/2" class="image">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
+						</a>
+					</section>
+				</section>
+
+				<section>
+					<h2>Point of View</h2>
+					<p>
+						Press <strong>ESC</strong> to enter the slide overview. Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
+					</p>
+				</section>
+
+				<section>
+					<h2>rvl.io</h2>
+					<p>
+						If you don't like writing slides in HTML you can use the online editor <a href="http://www.rvl.io" target="_blank">rvl.io</a>.
+					</p>
+				</section>
+
+				<section>
+					<h2>Works in Mobile Safari</h2>
+					<p>
+						Try it out! You can swipe through the slides and pinch your way to the overview.
+					</p>
+				</section>
+
+				<section>
+					<h2>Marvelous Unordered List</h2>
+					<ul>
+						<li>No order here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Fantastic Ordered List</h2>
+					<ol>
+						<li>One is smaller than...</li>
+						<li>Two is smaller than...</li>
+						<li>Three!</li>
+					</ol>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
+
+						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+
+							<section data-markdown>
+							  ## Markdown support
+
+							  For those of you who like that sort of thing.
+							  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+							</section>
+					</script>
+				</section>
+
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=cube#/transitions">Cube</a> -
+						<a href="?transition=page#/transitions">Page</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a> -
+						<a href="?transition=linear#/transitions">Linear</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?#/transitions">Default</a>
+					</p>
+				</section>
+
+				<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						Reveal.js comes with a few themes built in: <br>
+						<a href="?theme=sky#/themes">Sky</a> -
+						<a href="?theme=beige#/themes">Beige</a> -
+						<a href="?theme=simple#/themes">Simple</a> -
+						<a href="?theme=serif#/themes">Serif</a> -
+						<a href="?theme=night#/themes">Night</a> -
+						<a href="?#/themes">Default</a>
+					</p>
+					<p>
+						<small>
+							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
+						</small>
+					</p>
+				</section>
+
+				<section>
+					<section data-state="alert">
+						<h2>Global State</h2>
+						<p>
+							Set <code>data-state="something"</code> on a slide and <code>"something"</code>
+							will be added as a class to the document element when the slide is open. This lets you
+							apply broader style changes, like switching the background.
+						</p>
+						<a href="#" class="image navigate-down">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-state="blackout">
+						<h2>"blackout"</h2>
+						<a href="#" class="image navigate-down">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section data-state="soothe">
+						<h2>"soothe"</h2>
+						<a href="#" class="image navigate-next">
+							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(-90deg);">
+						</a>
+					</section>
+				</section>
+
+				<section data-state="customevent">
+					<h2>Custom Events</h2>
+					<p>
+						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
+					</p>
+					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener( 'customevent', function() {
+	console.log( '"customevent" has fired' );
+} );
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						The nice thing about standards is that there are so many to choose from</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
+					</blockquote>
+				</section>
+
+				<section>
+					<h2>Pretty Code</h2>
+					<pre><code contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) ) {
+        node.className += ' roll';
+      }
+    };
+  }
+}
+					</code></pre>
+					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+				</section>
+
+				<section>
+					<h2>Intergalactic Interconnections</h2>
+					<p>
+						You can link between slides internally,
+						<a href="#/2/3">like this</a>.
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Fragmented Views</h2>
+						<p>Hit the next arrow...</p>
+						<p class="fragment">... to step through ...</p>
+						<ol>
+							<li class="fragment"><code>any type</code></li>
+							<li class="fragment"><em>of view</em></li>
+							<li class="fragment"><strong>fragments</strong></li>
+						</ol>
+
+						<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+					</section>
+					<section>
+						<h2>Fragment Styles</h2>
+						<p>There's a few styles of fragments, like:</p>
+						<p class="fragment grow">grow</p>
+						<p class="fragment shrink">shrink</p>
+						<p class="fragment roll-in">roll-in</p>
+						<p class="fragment fade-out">fade-out</p>
+						<p class="fragment highlight-red">highlight-red</p>
+						<p class="fragment highlight-green">highlight-green</p>
+						<p class="fragment highlight-blue">highlight-blue</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Spectacular image!</h2>
+					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
+						
+					</a>
+				</section>
+
+				<section>
+					<h2>Export to PDF</h2>
+					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
+					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
+					<script>
+						document.getElementById('slideshare').attributeName = 'allowfullscreen';
+					</script>
+				</section>
+
+				<section>
+					<h2>Take a Moment</h2>
+					<p>
+						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
+						during a presentation.
+					</p>
+				</section>
+
+				<section>
+					<h2>Stellar Links</h2>
+					<ul>
+						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
+						<li><a href="http://hakim.se/projects/reveal-js">Leave feedback on my site</a></li>
+						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>It's free</h2>
+					<p>
+						reveal.js and <a href="http://www.rvl.io">rvl.io</a> are entirely free but if you'd like to support the projects you can donate below.
+						Donations will go towards hosting and domain costs.
+					</p>
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+						<input type="hidden" name="cmd" value="_donations">
+						<input type="hidden" name="business" value="hakim.elhattab@gmail.com">
+						<input type="hidden" name="lc" value="US">
+						<input type="hidden" name="item_name" value="reveal.js / rvl.io">
+						<input type="hidden" name="no_note" value="0">
+						<input type="hidden" name="currency_code" value="USD">
+						<input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+					</form>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<h3>BY Hakim El Hattab / hakim.se</h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/jquery-1.5.0.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+			Reveal.addEventListener('slidechanged', function(ev) {
+				var autoStart = ev.currentSlide.getAttribute("data-auto-start");
+				if (autoStart) {
+					setTimeout(Reveal.nextFragment, autoStart);
+				}
+			});
+
+			Reveal.addEventListener('fragmentshown', function(ev) {
+				var current = ev.fragment;
+
+				// activate next fragment automatically
+				var autoFragment = current.getAttribute("data-next-fragment");
+				if (autoFragment) {
+					setTimeout(Reveal.nextFragment, autoFragment);
+				}
+				
+				// Duplicate fragment into anothe node
+				var previousReplicate = current;
+				var nextReplicate = document.querySelector(previousReplicate.getAttribute("data-replicate-on"));
+				if (nextReplicate) {
+					var timeout = previousReplicate.getAttribute("data-replicate-in") || 0;
+					replicate = function() {
+						nextReplicate.className = previousReplicate.className;
+						previousReplicate = nextReplicate;
+						nextReplicate = document.querySelector(previousReplicate.getAttribute("data-replicate-on"));
+						if (nextReplicate) {
+							timeout = previousReplicate.getAttribute("data-replicate-in") || 0;
+							setTimeout(replicate, timeout);
+						}
+					}
+					setTimeout(replicate, timeout);
+				}
+
+				// send custom event
+				var customEvent = current.getAttribute("data-fragment-custom-event");
+				if (customEvent) {
+					Reveal.dispatchEvent(customEvent, { fragment: current });	
+				}
+			});
+
+			Reveal.addEventListener('fragmenthidden', function(ev) {
+				var current = ev.fragment;
+
+				// activate previous fragment automatically
+				var autoFragment = current.getAttribute("data-next-fragment");
+				if (autoFragment) {
+					setTimeout(Reveal.previousFragment, autoFragment);
+				}
+			});
+
+			Reveal.addEventListener("noSpaceLeft", function(ev) {
+				setTimeout(function() {
+					var servers = document.querySelectorAll(".server");
+					for (var i = 0; i < servers.length; i++) {
+						servers[i].classList.add("large");
+					}
+				}, 2000);
+			});
+		   
+		</script>
+
+	</body>
+</html>
