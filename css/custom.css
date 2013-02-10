@@ -59,6 +59,10 @@
 	margin-right: 0;
 }
 
+.reveal .replication .datacenter .server em {
+	font-size:19px;
+}
+
 .reveal .replication .datacenter .server .cell {
 	height:30px;
 	border-bottom: 1px solid grey;
@@ -72,6 +76,15 @@
 
 .reveal .replication .datacenter .server.large .cell.only-large {
 	display:block;
+}
+
+.reveal .replication .datacenter .server .cell .current {
+	opacity : 0.3;
+	-webkit-transition: all .1s ease;
+	   -moz-transition: all .1s ease;
+	    -ms-transition: all .1s ease;
+	     -o-transition: all .1s ease;
+	        transition: all .1s ease;
 }
 
 .reveal section.text p {

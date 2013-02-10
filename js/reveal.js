@@ -372,6 +372,8 @@ var Reveal = (function(){
 			document.addEventListener( 'keydown', onDocumentKeyDown, false );
 		}
 
+		document.addEventListener( 'click', preventAndForward( onDocumentClick ), false );
+
 		if ( config.progress && dom.progress ) {
 			dom.progress.addEventListener( 'click', preventAndForward( onProgressClick ), false );
 		}
@@ -1216,7 +1218,7 @@ var Reveal = (function(){
 	 * false otherwise
 	 */
 	function nextFragment() {
-		var fragments = document.querySelectorAll(document.querySelector( VERTICAL_SLIDES_SELECTOR + '.present') ? VERTICAL_SLIDES_SELECTOR + '.present .fragment:not(.visible)' : HORIZONTAL_SLIDES_SELECTOR + '.present .fragment:not(.visible)');
+		var fragments = document.querySelectorAll(document.querySelector( VERTICAL_SLIDES_SELECTOR + '.present') ? VERTICAL_SLIDES_SELECTOR + '.present .fragment:not(.visible)' : HORIZONTAL_SLIDES_SELECTOR + '.present .fragment:not(.visible) , ' + HORIZONTAL_SLIDES_SELECTOR + '.present .animation:not(.done)');
 		if (fragments.length) {
 			var firstFragment = fragments[0];
 			var minIndex = parseInt(firstFragment.getAttribute("data-fragment-index") || "10000000", 10);
@@ -1226,6 +1228,36 @@ var Reveal = (function(){
 					minIndex = currentIndex;
 					firstFragment = fragments[i];
 				}
+			}
+			if (firstFragment.classList.contains("animation")) {
+				var currentStep = parseInt(firstFragment.getAttribute("data-animation-step") || "0", 10) + 1;
+				var animations = firstFragment.getAttribute("data-animation-" + currentStep);
+				if (animations) {
+					animations = animations.split(';');
+					for (var i = 0; i < animations.length; i++) {
+						var matches = /^([a-z\-]*)[(](.*)[)]$/gi.exec(animations[i].trim());
+						if (matches.length > 1) {
+							var funcName = matches[1].trim();
+							var content = matches[2].trim();
+							if (funcName === "copy-to") {
+								var to = document.querySelector(content);
+								var from = firstFragment.cloneNode(true);
+								for (var j = 0; j < from.childNodes.length; j++) {
+									to.appendChild(from.childNodes[j]);
+								}
+							}
+							else if (funcName === "remove") document.querySelector(content).remove();
+							else if (funcName === "toggle-class") firstFragment.classList.toggle(content.trim());
+							else if (funcName === "dispatch-event") dispatchEvent( content.trim(), { fragment: firstFragment } );
+						}
+					}
+				}
+				firstFragment.setAttribute("data-animation-step", currentStep);
+				var nextAttribute = "data-animation-" + (currentStep + 1);
+				if (!firstFragment.hasAttribute(nextAttribute)) {
+					firstFragment.classList.add("done");
+				}
+				//console.log(firstFragment);
 			}
 			firstFragment.classList.add( 'visible' );
 
@@ -1543,6 +1575,10 @@ var Reveal = (function(){
 		var slideIndex = Math.floor( ( event.clientX / dom.wrapper.offsetWidth ) * slidesTotal );
 
 		slide( slideIndex );
+	}
+
+	function onDocumentClick( event ) {
+		navigateNext();
 	}
 
 	/**
