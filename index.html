@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>NoSQL : How to choose th right one ?</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Rémi Alvado">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Custom styles -->
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section id="introduction">
+					<h1>NoSQL</h1>
+					<h3>How to choose the right one ?</h3>
+					<p>
+						<small><a href="mailto:remi.alvado@gmail.com">Rémi Alvado</a> / <a href="http://twitter.com/remialvado">@remialvado</a> / <a href="http://www.shoppingadventure.fr/">Shopping Adventure</a></small>
+					</p>
+				</section>
+
+				<section id="heads-up" data-auto-start="300">
+					<h2>Heads Up</h2>
+					<p  data-next-fragment="500" class="fragment roll-in">NoSQL does not mean : </p>
+					<blockquote data-next-fragment="500" class="fragment roll-in">We don't want to work with SQL <strong class="fragment highlight-red">anymore</strong></blockquote>
+					<p data-next-fragment="500" class="fragment roll-in">but : </p>
+					<blockquote data-next-fragment="500" class="fragment roll-in">We don't want to work <strong class="fragment highlight-green">only</strong> with SQL</blockquote>
+				</section>
+
+				<section id="existing-databases" data-auto-start="1000">
+					<div id="lib-cloud">
+						<a data-next-fragment="400" style="position:absolute; top: 250px; left:135px;" class="fragment roll-in size4" href="http://hadoop.apache.org/">Hadoop / HBase</a>
+						<a data-next-fragment="400" style="position:absolute; top: 330px; left:0px;" class="fragment roll-in size4" href="http://incubator.apache.org/cassandra/">Cassandra</a>
+						<a data-next-fragment="400" style="position:absolute; top: 5px; left:420px;" class="fragment roll-in size4" href="http://code.google.com/p/terrastore/">Terrastore</a>
+						<a data-next-fragment="400" style="position:absolute; top: 90px; left:220px;" class="fragment roll-in size4" href="http://couchdb.apache.org/">CouchDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 330px; left:400px;" class="fragment roll-in size4" href="http://www.mongodb.org/">MongoDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 170px; left:800px;" class="fragment roll-in size4" href="http://redis.io/">Redis</a>
+						<a data-next-fragment="400" style="position:absolute; top: 30px; left:70px;" class="fragment roll-in size3" href="http://aws.amazon.com/simpledb/">Amazon SimpleDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 350px; left:650px;" class="fragment roll-in size3" href="http://www.cloudata.org/">Cloudata</a>
+						<a data-next-fragment="400" style="position:absolute; top: 120px; left:450px;" class="fragment roll-in size3" href="http://www.cloudera.com/">Cloudera</a>
+						<a data-next-fragment="400" style="position:absolute; top: 290px; left:230px;" class="fragment roll-in size3" href="http://www.couchbase.com/">Couchbase Server</a>
+						<a data-next-fragment="400" style="position:absolute; top: 230px; left:10px;" class="fragment roll-in size3" href="http://aws.amazon.com/dynamodb/">DynamoDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 30px; left:600px;" class="fragment roll-in size3" href="http://riak.basho.com/">Riak</a>
+						<a data-next-fragment="400" style="position:absolute; top: 120px; left:20px;" class="fragment roll-in size3" href="http://project-voldemort.com/">Voldemort</a>
+						<a data-next-fragment="400" style="position:absolute; top: 400px; left:600px;" class="fragment roll-in size3" href="http://memcachedb.org/">MemcacheDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 250px; left:450px;" class="fragment roll-in size3" href="http://www.infinitegraph.com/">Infinite Graph</a>
+						<a data-next-fragment="400" style="position:absolute; top: 100px; left:120px;" class="fragment roll-in size2" href="http://www.rediosoft.com/">VaultDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 40px; left:250px;" class="fragment roll-in size2" href="http://hypertable.org/">Hypertable</a>
+						<a data-next-fragment="400" style="position:absolute; top: 10px; left:700px;" class="fragment roll-in size2" href="http://accumulo.apache.org/">Accumulo</a>
+						<a data-next-fragment="400" style="position:absolute; top: 40px; left:770px;" class="fragment roll-in size2" href="http://www.hpccsystems.com/">HPCC</a>
+						<a data-next-fragment="400" style="position:absolute; top: 120px; left:650px;" class="fragment roll-in size2" href="http://www.aerospike.com/">Aerospike</a>
+						<a data-next-fragment="400" style="position:absolute; top: 220px; left:550px;" class="fragment roll-in size2" href="http://code.google.com/p/leveldb/">LevelDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 210px; left:700px;" class="fragment roll-in size2" href="http://msdn.microsoft.com/en-us/library/dd179423.aspx">Azure Table Storage</a>
+						<a data-next-fragment="400" style="position:absolute; top: 205px; left:300px;" class="fragment roll-in size2" href="http://fallabs.com/tokyocabinet/">Tokyo Cabinet / Tyrant</a>
+						<a data-next-fragment="400" style="position:absolute; top: 290px; left:680px;" class="fragment roll-in size2" href="http://www.oracle.com/database/berkeley-db/db/index.html">Berkeley DB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 450px; left:30px;" class="fragment roll-in size2" href="http://highlandsun.com/hyc/mdb/">OpenLDAP</a>
+						<a data-next-fragment="400" style="position:absolute; top: 450px; left:750px;" class="fragment roll-in size2" href="http://www.neo4j.org/">Neo4J</a>
+						<a data-next-fragment="400" style="position:absolute; top: 420px; left:500px;" class="fragment roll-in size2" href="http://www.jboss.org/infinispan.html">Infinispan</a>
+						<a data-next-fragment="400" style="position:absolute; top: 400px; left:350px;" class="fragment roll-in size2" href="http://github.com/twitter/flockdb">FlockDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 440px; left:250px;" class="fragment roll-in size2" href="http://www.oracle.com/database/berkeley-db/xml/index.html">Berkeley DB XML</a>
+						<a data-next-fragment="400" style="position:absolute; top: 380px; left:690px;" class="fragment roll-in size2" href="http://www-01.ibm.com/software/lotus/">IBM Lotus/Domino</a>
+						<a data-next-fragment="400" style="position:absolute; top: 370px; left:300px;" class="fragment roll-in size1" href="http://github.com/ravendb/ravendb">RavenDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 380px; left:130px;" class="fragment roll-in size1" href="http://www.marklogic.com/">MarkLogic Server</a>
+						<a data-next-fragment="400" style="position:absolute; top: 270px; left:600px;" class="fragment roll-in size1" href="http://www.clusterpoint.com/">Clusterpoint Server</a>
+						<a data-next-fragment="400" style="position:absolute; top: 160px; left:0px;" class="fragment roll-in size1" href="http://code.google.com/p/thrudb/">ThruDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 180px; left:110px;" class="fragment roll-in size1" href="http://stratosphere.eu/">Stratosphere</a>
+						<a data-next-fragment="400" style="position:absolute; top: 60px; left:670px;" class="fragment roll-in size1" href="http://www.codeproject.com/Articles/375413/RaptorDB-the-Document-Store">RaptorDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 180px; left:360px;" class="fragment roll-in size1" href="http://www.oberasoftware.com/">JasDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 150px; left:280px;" class="fragment roll-in size1" href="http://www.sisodb.com/">SisoDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 80px; left:430px;" class="fragment roll-in size1" href="http://pagenotes.com/wordpress/2011/12/08/sdb/">SDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 70px; left:530px;" class="fragment roll-in size1" href="http://schemafreedb.com/">SchemaFreeDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 180px; left:570px;" class="fragment roll-in size1" href="http://djondb.com/">djondb</a>
+						<a data-next-fragment="400" style="position:absolute; top: 340px; left:780px;" class="fragment roll-in size1" href="http://ejdb.org/">EJDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 430px; left:800px;" class="fragment roll-in size1" href="http://www.densodb.net/">densodb</a>
+						<a data-next-fragment="400" style="position:absolute; top: 90px; left:30px;" class="fragment roll-in size1" href="http://sourceforge.net/projects/chordless/">Chordless</a>
+						<a data-next-fragment="400" style="position:absolute; top: 50px; left:10px;" class="fragment roll-in size1" href="http://www.geniedb.com/">GenieDB</a>
+						<a data-next-fragment="400" style="position:absolute; top: 460px; left:440px;" class="fragment roll-in size1" href="http://code.google.com/p/scalaris/"> Scalaris</a>
+						<a data-next-fragment="400" style="position:absolute; top: 430px; left:180px;" class="fragment roll-in size1" href="http://scalien.com/">Scalien</a>
+						<a data-next-fragment="400" style="position:absolute; top: 290px; left:-10px;" class="fragment roll-in size1" href="http://wiki.github.com/cliffmoon/dynomite/dynomite-framework">Dynomite</a>
+						<a data-next-fragment="400" style="position:absolute; top: 400px; left:-20px;" class="fragment roll-in size1" href="http://sourceforge.net/projects/kai/">KAI</a>
+						<a data-next-fragment="400" style="position:absolute; top: 480px; left:600px;" class="fragment roll-in size1" href="http://www.faircom.com/nosql">Faircom C-Tree</a>
+					</div>
+				</section>
+
+				<section id="plan-1" >
+					<h2>Main features</h2>
+					<ol>
+						<li class="fragment highlight-pink">Data warehouse</li>
+						<li>Search Engine</li>
+						<li>Big data processing</li>
+					</ol>
+				</section>
+				<section id="storage-format">
+					<h2>Storage Format</h2>
+					<div class="fragment roll-in" id="multi-column-based">
+						<h3>Multi column</h3>
+						<table>
+							<tr>
+								<td>id</td>
+								<td>street</td>
+								<td>postcode</td>
+								<td>city</td>
+							</tr>
+						</table>
+					</div>
+					<div class="fragment roll-in">
+						<h3>Document based</h3>
+						<pre class="fragment fade-out remove" data-next-fragment="200"><code contenteditable class="language-xml">
+&lt;?xml version="1.0" encoding="UTF-8" ?>
+&lt;address>
+  &lt;city postcode="38000">Grenoble</city>
+  &lt;street>85 rue des Alliés</street>
+&lt;/address>
+						</code></pre>
+						<div class="fragment roll-in"><pre class="fragment fade-out remove" data-next-fragment="200"><code contenteditable class="json">
+{
+  "city": {
+    "postcode": "38000",
+    "value" : "Grenoble"
+  },
+  "street": "85 rue des Alliés"
+}
+						</code></pre></div>
+						<pre class="fragment roll-in"><code contenteditable class="yaml">
+address:
+  city:
+    postocode: 38000
+    value: Grenoble
+  street: 85 rue des alliés
+						</code></pre>
+					</div>
+				</section>
+				<section id="data-structure" data-auto-start="1000">
+					<h2>Data structure</h2>
+					<p>Your data are well structured and never mutate ? Prefer <span class="fragment highlight-blue" data-next-fragment="1000">Schema</span> !</p>
+					<p>You data structure is evolving all the time to match new requirements ? Consider <span class="fragment highlight-blue">Schema-less</span> datawarehouses.</p>
+				</section>
+				<section id="master-slave" class="replication">
+					<h2>Data Storage</h2>
+					<h3>Master Slave</h3>
+					<div class="datacenter">
+						<div class="server-group">
+							<div class="server s1">
+								<div class="cell"><span class="color-1 fragment roll-in" data-replicate-in="600" data-replicate-on=".s2 .cell:nth-of-type(1) span">A</span></div>
+								<div class="cell"><span class="color-2 fragment roll-in" data-replicate-in="600" data-replicate-on=".s2 .cell:nth-of-type(2) span" data-next-fragment="1500">B</span></div>
+								<div class="cell"><span class="color-3 fragment roll-in" data-replicate-in="600" data-replicate-on=".s2 .cell:nth-of-type(3) span">C</span></div>
+								<div class="cell"><span class="color-4 fragment roll-in" data-replicate-in="600" data-replicate-on=".s2 .cell:nth-of-type(4) span" data-fragment-custom-event="noSpaceLeft">D</span></div>
+								<div class="cell only-large"><span class="color-5 fragment roll-in" data-replicate-in="600" data-replicate-on=".s2 .cell:nth-of-type(5) span">E</span></div>
+								<em>S1</em>
+							</div>
+							<p>Master group</p>
+						</div>
+						<div class="server-group">
+							<div class="server s2">
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s3 .cell:nth-of-type(1) span">A</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s3 .cell:nth-of-type(2) span">B</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s3 .cell:nth-of-type(3) span">C</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s3 .cell:nth-of-type(4) span">D</span></div>
+								<div class="cell only-large"><span class="color-5 fragment roll-in" data-replicate-in="600" data-replicate-on=".s3 .cell:nth-of-type(5) span" data-next-fragment="1500">E</span></div>
+								<em>S2</em>
+							</div>
+							<div class="server s3">
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s4 .cell:nth-of-type(1) span">A</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s4 .cell:nth-of-type(2) span">B</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s4 .cell:nth-of-type(3) span">C</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s4 .cell:nth-of-type(4) span">D</span></div>
+								<div class="cell only-large"><span class="color-5 fragment roll-in" data-replicate-in="600" data-replicate-on=".s4 .cell:nth-of-type(5) span" data-next-fragment="1500">E</span></div>
+								<em>S3</em>
+							</div>
+							<div class="server s4">
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s5 .cell:nth-of-type(1) span">A</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s5 .cell:nth-of-type(2) span">B</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s5 .cell:nth-of-type(3) span">C</span></div>
+								<div class="cell"><span class="invisible" data-replicate-in="200" data-replicate-on=".s5 .cell:nth-of-type(4) span">D</span></div>
+								<div class="cell only-large"><span class="color-5 fragment roll-in" data-replicate-in="600" data-replicate-on=".s5 .cell:nth-of-type(5) span" data-next-fragment="1500">E</span></div>
+								<em>S4</em>
+							</div>
+							<div class="server s5">
+								<div class="cell"><span class="invisible">A</span></div>
+								<div class="cell"><span class="invisible">B</span></div>
+								<div class="cell"><span class="invisible">C</span></div>
+								<div class="cell"><span class="invisible">D</span></div>
+								<div class="cell only-large"><span class="invisible">E</span></div>
+								<em>S5</em>
+							</div>
+							<p>Slaves group</p>
+						</div>
+					</div>
+				</section>
+				<section id="distributed-with-master" class="replication">
+					<h2>Data Storage</h2>
+					<h3>Distributed with master</h3>
+					<div class="datacenter">
+						<div class="server-group">
+							<div class="server s1">
+								<div class="cell"><span data-fragment-index="1"  class="color-1  fragment roll-in">A</span></div>
+								<div class="cell"><span data-fragment-index="13" class="color-6  fragment roll-in" data-next-fragment="100">M</span></div>
+								<div class="cell"><span data-fragment-index="16" class="color-11 fragment roll-in" data-next-fragment="100"><span class="fragment fade-out" data-next-fragment="300" data-fragment-index="22">P</span></span><span data-fragment-index="29" class="color-9 fragment roll-in" data-next-fragment="100">V</span></div>
+								<div class="cell"><span data-fragment-index="19" class="color-2  fragment roll-in" data-next-fragment="100">S</span></div>
+								<em>S1</em>
+							</div>
+							<p>Master group</p>
+						</div>
+						<div class="server-group">
+							<div class="server s2">
+								<div class="cell"><span data-fragment-index="4"  class="color-2  fragment roll-in" data-next-fragment="100">D</span></div>
+								<div class="cell"><span data-fragment-index="7"  class="color-7  fragment roll-in" data-next-fragment="100"><span class="fragment fade-out" data-next-fragment="300" data-fragment-index="24">G</span></span><span data-fragment-index="30" class="color-10 fragment roll-in" data-next-fragment="100">W</span></div>
+								<div class="cell"><span data-fragment-index="9"  class="color-12 fragment roll-in" data-next-fragment="100">I</span></div>
+								<div class="cell"><span data-fragment-index="14" class="color-3  fragment roll-in" data-next-fragment="100">N</span></div>
+								<em>S2</em>
+							</div>
+							<div class="server s3">
+								<div class="cell"><span data-fragment-index="2"  class="color-3  fragment roll-in">B</span></div>
+								<div class="cell"><span data-fragment-index="3"  class="color-8  fragment roll-in" data-next-fragment="100"><span class="fragment fade-out" data-next-fragment="300" data-fragment-index="26">C</span></span><span data-fragment-index="31" class="color-11 fragment roll-in">X</span></div>
+								<div class="cell"><span data-fragment-index="12" class="color-13 fragment roll-in" data-next-fragment="100">L</span></div>
+								<div class="cell"><span data-fragment-index="15" class="color-4  fragment roll-in" data-next-fragment="100">O</span></div>
+								<em>S3</em>
+							</div>
+							<div class="server s4">
+								<div class="cell"><span data-fragment-index="5"  class="color-4  fragment roll-in" data-next-fragment="100">E</span></div>
+								<div class="cell"><span data-fragment-index="8"  class="color-9  fragment roll-in" data-next-fragment="100">H</span></div>
+								<div class="cell"><span data-fragment-index="11" class="color-14 fragment roll-in" data-next-fragment="100">K</span></div>
+								<div class="cell"><span data-fragment-index="17" class="color-5  fragment roll-in" data-next-fragment="100">Q</span></div>
+								<em>S4</em>
+							</div>
+							<div class="server s5">
+								<div class="cell"><span data-fragment-index="6"  class="color-5  fragment roll-in" data-next-fragment="100">F</span></div>
+								<div class="cell"><span data-fragment-index="10" class="color-10 fragment roll-in" data-next-fragment="100">J</span></div>
+								<div class="cell"><span data-fragment-index="18" class="color-1  fragment roll-in" data-next-fragment="100">R</span></div>
+								<div class="cell"><span data-fragment-index="20" class="color-6  fragment roll-in">T</span></div>
+								<em>S5</em>
+							</div>
+							<div class="server s6 fragment roll-in" data-fragment-index="21" data-fragment-custom-event="newServer">
+								<div class="cell"><span data-fragment-index="23" class="color-11 fragment roll-in">P</span></div>
+								<div class="cell"><span data-fragment-index="25" class="color-7  fragment roll-in">G</span></div>
+								<div class="cell"><span data-fragment-index="27" class="color-8  fragment roll-in">C</span></div>
+								<div class="cell"><span data-fragment-index="28" class="color-3  fragment roll-in" data-next-fragment="100">U</span></div>
+								<em>S6</em>
+							</div>
+							<p>Slaves group</p>
+						</div>
+					</div>
+				</section>
+				<section id="distributed-without-master" class="replication" data-auto-start="1000">
+					<h2>Data Storage</h2>
+					<h3>Distributed without master (<span class="fragment highlight-blue">masterless</span>)</h3>
+					<div class="datacenter">
+						<div class="server-group">
+							<div class="server s1">
+								<div class="cell"><span class="color-1">A</span></div>
+								<div class="cell"><span class="color-6">M</span></div>
+								<div class="cell"><span class="color-9">V</span></div>
+								<div class="cell"><span class="color-2">S</span></div>
+								<em>S1</em>
+							</div>
+							<div class="server s2">
+								<div class="cell"><span class="color-2 ">D</span></div>
+								<div class="cell"><span class="color-10">W</span></div>
+								<div class="cell"><span class="color-12">I</span></div>
+								<div class="cell"><span class="color-3 ">N</span></div>
+								<em>S2</em>
+							</div>
+							<div class="server s3">
+								<div class="cell"><span class="color-3 ">B</span></div>
+								<div class="cell"><span class="color-11">X</span></div>
+								<div class="cell"><span class="color-13">L</span></div>
+								<div class="cell"><span class="color-4 ">O</span></div>
+								<em>S3</em>
+							</div>
+							<div class="server s4">
+								<div class="cell"><span class="color-4 ">E</span></div>
+								<div class="cell"><span class="color-9 ">H</span></div>
+								<div class="cell"><span class="color-14">K</span></div>
+								<div class="cell"><span class="color-5 ">Q</span></div>
+								<em>S4</em>
+							</div>
+							<div class="server s5">
+								<div class="cell"><span class="color-5 ">F</span></div>
+								<div class="cell"><span class="color-10">J</span></div>
+								<div class="cell"><span class="color-1 ">R</span></div>
+								<div class="cell"><span class="color-6 ">T</span></div>
+								<em>S5</em>
+							</div>
+							<div class="server s6">
+								<div class="cell"><span class="color-11">P</span></div>
+								<div class="cell"><span class="color-7 ">G</span></div>
+								<div class="cell"><span class="color-8 ">C</span></div>
+								<div class="cell"><span class="color-3 ">U</span></div>
+								<em>S6</em>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section id="distributed-with-replication" class="replication">
+					<h2>Data Storage</h2>
+					<h3>Distributed with replication</h3>
+					<div class="datacenter">
+						<div class="server-group">
+							<div class="server s1">
+								<div class="cell"><span data-fragment-index="1 " class="color-1  fragment roll-in" data-next-fragment="0">A</span></div>
+								<div class="cell"><span data-fragment-index="11" class="color-6  fragment roll-in" data-next-fragment="0">F</span></div>
+								<div class="cell"><span data-fragment-index="15" class="color-8  fragment roll-in" data-next-fragment="0">H</span></div>
+								<div class="cell"><span data-fragment-index="23" class="color-11 fragment roll-in" data-next-fragment="0">L</span></div>
+								<em>S1</em>
+							</div>
+							<div class="server s2">
+								<div class="cell"><span data-fragment-index="3 " class="color-2  fragment roll-in" data-next-fragment="0">B</span></div>
+								<div class="cell"><span data-fragment-index="10" class="color-5  fragment roll-in" data-next-fragment="0">E</span></div>
+								<div class="cell"><span data-fragment-index="18" class="color-9  fragment roll-in" data-next-fragment="0">I</span></div>
+								<div class="cell"><span data-fragment-index="22" class="color-10 fragment roll-in" data-next-fragment="0">K</span></div>
+								<em>S2</em>
+							</div>
+							<div class="server s3">
+								<div class="cell"><span data-fragment-index="4 " class="color-2  fragment roll-in">B</span></div>
+								<div class="cell"><span data-fragment-index="2 " class="color-1  fragment roll-in">A</span></div>
+								<div class="cell"><span data-fragment-index="14" class="color-7  fragment roll-in" data-next-fragment="0">G</span></div>
+								<div class="cell"><span data-fragment-index="20" class="color-9  fragment roll-in" data-next-fragment="0">J</span></div>
+								<em>S3</em>
+							</div>
+							<div class="server s4">
+								<div class="cell"><span data-fragment-index="12" class="color-6  fragment roll-in" data-next-fragment="0">F</span></div>
+								<div class="cell"><span data-fragment-index="5 " class="color-3  fragment roll-in" data-next-fragment="0">C</span></div>
+								<div class="cell"><span data-fragment-index="19" class="color-9  fragment roll-in" data-next-fragment="0">J</span></div>
+								<div class="cell"><span data-fragment-index="21" class="color-10 fragment roll-in" data-next-fragment="0">K</span></div>
+								<em>S4</em>
+							</div>
+							<div class="server s5">
+								<div class="cell"><span data-fragment-index="13" class="color-7  fragment roll-in" data-next-fragment="0">G</span></div>
+								<div class="cell"><span data-fragment-index="6 " class="color-10 fragment roll-in" data-next-fragment="0">J</span></div>
+								<div class="cell"><span data-fragment-index="17" class="color-9  fragment roll-in" data-next-fragment="0">I</span></div>
+								<div class="cell"><span data-fragment-index="7 " class="color-4  fragment roll-in" data-next-fragment="0">D</span></div>
+								<em>S5</em>
+							</div>
+							<div class="server s6 fragment fade-out" data-fragment-index="25">
+								<div class="cell"><span data-fragment-index="8 " class="color-4  fragment roll-in" data-next-fragment="0">D</span></div>
+								<div class="cell"><span data-fragment-index="9 " class="color-5  fragment roll-in" data-next-fragment="0">E</span></div>
+								<div class="cell"><span data-fragment-index="16" class="color-8  fragment roll-in" data-next-fragment="0">H</span></div>
+								<div class="cell"><span data-fragment-index="24" class="color-11 fragment roll-in">L</span></div>
+								<em>S6</em>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section id="plan-2" data-auto-start="1000">
+					<h2>Main features</h2>
+					<ol>
+						<li>Data warehouse</li>
+						<li class="fragment highlight-pink">Search Engine</li>
+						<li>Big data processing</li>
+					</ol>
+				</section>
+
+				<section id="search-index" data-auto-start="1000">
+					<h2>Search data using an index</h2>
+					<p>Always an access by one primary <span class="fragment highlight-blue" data-next-fragment="1000">key</span>. Key can be user or system defined.</p>
+					<p>Possibility to setup multiple <span class="fragment highlight-blue">secondary indexes</span>. Comes mainly with a storage cost.</p>
+				</section>
+
+				<section id="full-text-search" class="text" data-auto-start="1000">
+					<h2>Real time data search</h2>
+					<p>Only supported by a <span class="fragment highlight-blue" data-next-fragment="500">few NoSQL Engine</span> so far but this is one of the <span class="fragment highlight-blue" data-next-fragment="1000">key feature</span> nearly everyone is working on !</p>
+					<p>Multiple <span class="fragment highlight-blue" data-next-fragment="1000">interface types</span> : SOAP, REST, HTTP, Thrift, Binary, Telnet-like, ...</p>
+					<p>Multiple <span class="fragment highlight-blue" data-next-fragment="1000">query languages</span> : Solr-like, BSon, ...</p>
+					<p>Many supported features : 
+						<ul>
+							<li>Exact matches</li>
+							<li>Wildcard matches</li>
+							<li>Syntaxic proximity</li>
+							<li>Facets</li>
+							<li>Number supports : min, max, range, comparaison, ...</li>
+							<li>...</li>
+						</ul>
+					</p>
+				</section>
+
+				<section id="indexing" class="text" data-auto-start="1000">
+					<h2>Indexing process</h2>
+					<p><span class="fragment highlight-blue" data-next-fragment="1000">Fully manual</span> : developers are using an indexer API to define what should be indexed</p>
+					<p><span class="fragment highlight-blue" data-next-fragment="1000">Schema driven</span> : a data schema is helping the NoSQL database to perform indexation</p>
+					<p><span class="fragment highlight-blue" data-next-fragment="1000">Automatic</span> : the NoSQL database tries to guess what is the best type for each element (column or node)</p>
+					<p><span class="fragment highlight-blue" data-next-fragment="500">Synchrone</span> or <span class="fragment highlight-blue" data-next-fragment="1000">Asychrone</span></p>
+					<p><span class="fragment highlight-blue" data-next-fragment="500">Near realtime</span> (less than 20ms) or... <span class="fragment highlight-blue">quite slow</span> (more than 3-4 seconds)</p>
+				</section>
+
+				<section id="plan-3" data-auto-start="1000">
+					<h2>Main features</h2>
+					<ol>
+						<li>Data warehouse</li>
+						<li>Search Engine</li>
+						<li class="fragment highlight-pink">Big data processing</li>
+					</ol>
+				</section>
+
+				<section id="mapred-1" class="replication">
+					<h2>Regular processing</h2>
+					<em>Search for uniq vowels</em>
+					<div class="datacenter">
+						<div class="server-group">
+							<div class="server s0">
+								<div class="cell pre-filter"></div>
+								<div class="cell">Filter</div>
+								<div class="cell post-filter"></div>
+								<em>Processing</em>
+							</div>
+							<div class="server s1">
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span) ; copy-to(#mapred-1 .post-filter)"><span class="color-1">A</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)"><span class="color-6 ">F</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-8 ">H</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-11">L</span></span></div>
+								<em>S1</em>
+							</div>
+							<div class="server s2">
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-2 ">B</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span) ; copy-to(#mapred-1 .post-filter)" data-next-fragment="200"><span class="color-5 ">E</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span) ; copy-to(#mapred-1 .post-filter)" data-next-fragment="200"><span class="color-9 ">I</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-10">K</span></span></div>
+								<em>S2</em>
+							</div>
+							<div class="server s3">
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-2 ">B</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-1 ">A</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-7 ">G</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-9 ">J</span></span></div>
+								<em>S3</em>
+							</div>
+							<div class="server s4">
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-6 ">F</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-3 ">C</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-9 ">J</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-10">K</span></span></div>
+								<em>S4</em>
+							</div>
+							<div class="server s5">
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-7 ">G</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-10">J</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-9 ">I</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-4 ">D</span></span></div>
+								<em>S5</em>
+							</div>
+							<div class="server s6">
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-4 ">D</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-5 ">E</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-8 ">H</span></span></div>
+								<div class="cell"><span class="animation" data-animation-1="toggle-class(current) ; copy-to(#mapred-1 .pre-filter)" data-animation-2="toggle-class(current) ; remove(#mapred-1 .pre-filter span)" data-next-fragment="200"><span class="color-11">L</span></span></div>
+								<em>S6</em>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section id="mapred-2" class="replication">
+					<h2>Map Reduce</h2>
+					<em>Search for uniq vowels</em>
+					<div class="datacenter animation" data-fragment-index="2" data-animation-1="dispatch-event(mapred-2-map1)" data-animation-2="dispatch-event(mapred-2-map2)" data-animation-3="dispatch-event(mapred-2-map3)" data-animation-4="dispatch-event(mapred-2-map4)">
+						<div class="server-group">
+							<div class="server s0">
+								<div class="cell pre-filter"></div>
+								<div class="cell animation" data-fragment-index="1" data-animation-1="copy-to(#mapred-2 .server:nth-of-type(2) .cell:nth-of-type(5)); copy-to(#mapred-2 .server:nth-of-type(3) .cell:nth-of-type(5)); copy-to(#mapred-2 .server:nth-of-type(4) .cell:nth-of-type(5)); copy-to(#mapred-2 .server:nth-of-type(5) .cell:nth-of-type(5)) ; copy-to(#mapred-2 .server:nth-of-type(6) .cell:nth-of-type(5)) ; copy-to(#mapred-2 .server:nth-of-type(7) .cell:nth-of-type(5))">Filter</div>
+								<div class="cell post-filter"></div>
+								<em>Processing</em>
+							</div>
+							<div class="server s1">
+								<div class="cell"><span class="color-1 ">A</span></div>
+								<div class="cell"><span class="color-6 ">F</span></div>
+								<div class="cell"><span class="color-8 ">H</span></div>
+								<div class="cell"><span class="color-11">L</span></div>
+								<div class="cell"></div>
+								<div class="cell post-filter animation" data-fragment-index="3" data-animation-1="dispatch-event(mapred-2-reduce1)" data-animation-2="dispatch-event(mapred-2-reduce2)"></div>
+								<em>S1</em>
+							</div>
+							<div class="server s2">
+								<div class="cell"><span class="color-2 ">B</span></div>
+								<div class="cell"><span class="color-5 ">E</span></div>
+								<div class="cell"><span class="color-9 ">I</span></div>
+								<div class="cell"><span class="color-10">K</span></div>
+								<div class="cell"></div>
+								<div class="cell post-filter animation" data-next-fragment="200" data-fragment-index="4" data-animation-1="dispatch-event(mapred-2-reduce1)" data-animation-2="dispatch-event(mapred-2-reduce2)"></div>
+								<em>S2</em>
+							</div>
+							<div class="server s3">
+								<div class="cell"><span class="color-2 ">B</span></div>
+								<div class="cell"><span class="color-1 ">A</span></div>
+								<div class="cell"><span class="color-7 ">G</span></div>
+								<div class="cell"><span class="color-9 ">J</span></div>
+								<div class="cell"></div>
+								<div class="cell post-filter animation" data-next-fragment="200" data-fragment-index="5" data-animation-1="dispatch-event(mapred-2-reduce1)" data-animation-2="dispatch-event(mapred-2-reduce2)"></div>
+								<em>S3</em>
+							</div>
+							<div class="server s4">
+								<div class="cell"><span class="color-6 ">F</span></div>
+								<div class="cell"><span class="color-3 ">C</span></div>
+								<div class="cell"><span class="color-9 ">J</span></div>
+								<div class="cell"><span class="color-10">K</span></div>
+								<div class="cell"></div>
+								<div class="cell post-filter"></div>
+								<em>S4</em>
+							</div>
+							<div class="server s5">
+								<div class="cell"><span class="color-7 ">G</span></div>
+								<div class="cell"><span class="color-10">J</span></div>
+								<div class="cell"><span class="color-9 ">I</span></div>
+								<div class="cell"><span class="color-4 ">D</span></div>
+								<div class="cell"></div>
+								<div class="cell post-filter animation" data-next-fragment="200" data-fragment-index="7" data-animation-1="dispatch-event(mapred-2-reduce1)" data-animation-2="dispatch-event(mapred-2-reduce2)"></div>
+								<em>S5</em>
+							</div>
+							<div class="server s6">
+								<div class="cell"><span class="color-4 ">D</span></div>
+								<div class="cell"><span class="color-5 ">E</span></div>
+								<div class="cell"><span class="color-8 ">H</span></div>
+								<div class="cell"><span class="color-11">L</span></div>
+								<div class="cell"></div>
+								<div class="cell post-filter animation" data-next-fragment="200" data-fragment-index="8" data-animation-1="dispatch-event(mapred-2-reduce1)" data-animation-2="dispatch-event(mapred-2-reduce2)"></div>
+								<em>S6</em>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section id="mapred-3" class="text" data-auto-start="1000">
+					<h2>Map Reduce</h2>
+					<p>Only supported by a <span class="fragment highlight-blue" data-next-fragment="500">few NoSQL Engine</span> so far but this is a cool feature !</p>
+					<p>Multiple <span class="fragment highlight-blue" data-next-fragment="500">supported languages</span> : Java, Javascript, Erlang, ...</p>
+					<p>Map phase can use some extra features like <span class="fragment highlight-blue" data-next-fragment="500">Search</span>, <span class="fragment highlight-blue" data-next-fragment="500">key filtering</span>, ...</p>
+				</section>
+
+				<section class="text" data-auto-start="1000">
+					<h2>Summary</h2>
+					<p>Many supported features related to big data management : <span class="fragment highlight-blue" data-next-fragment="500">storage</span>, <span class="fragment highlight-blue" data-next-fragment="500">search</span>, <span class="fragment highlight-blue" data-next-fragment="500">processing</span>, ...</p>
+					<p><span class="fragment highlight-blue" data-next-fragment="500">Performances are really great</span> for most of them : it's not the only way to make your choice</p>
+					<p>You can use <span class="fragment highlight-blue" data-next-fragment="500">multiple NoSQL frameworks</span> at the same time. Eg : <a href="https://github.com/rzezeski/yokozuna">Yokozuna</a>, <a href="http://blog.mongodb.org/post/29127828146/introducing-mongo-connector">MongoDB Connector</a>, ...</p>
+				</section>
+
+				<section class="text" data-auto-start="1000">
+					<h2>Questions ?</h2>
+				</section>
+			</div>
+		</div>
+		<a href="https://github.com/remialvado/pres-humantalks-nosql"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/jquery-1.5.0.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+			Reveal.addEventListener('slidechanged', function(ev) {
+				var autoStart = ev.currentSlide.getAttribute("data-auto-start");
+				if (autoStart) {
+					setTimeout(Reveal.nextFragment, autoStart);
+				}
+			});
+
+			Reveal.addEventListener('fragmentshown', function(ev) {
+				var current = ev.fragment;
+
+				// activate next fragment automatically
+				var autoFragment = current.getAttribute("data-next-fragment");
+				if (autoFragment) {
+					setTimeout(Reveal.nextFragment, autoFragment);
+				}
+				
+				// Duplicate fragment into anothe node
+				var previousReplicate = current;
+				var nextReplicate = document.querySelector(previousReplicate.getAttribute("data-replicate-on"));
+				if (nextReplicate) {
+					var timeout = previousReplicate.getAttribute("data-replicate-in") || 0;
+					replicate = function() {
+						nextReplicate.className = previousReplicate.className;
+						previousReplicate = nextReplicate;
+						nextReplicate = document.querySelector(previousReplicate.getAttribute("data-replicate-on"));
+						if (nextReplicate) {
+							timeout = previousReplicate.getAttribute("data-replicate-in") || 0;
+							setTimeout(replicate, timeout);
+						}
+					}
+					setTimeout(replicate, timeout);
+				}
+
+				// send custom event
+				var customEvent = current.getAttribute("data-fragment-custom-event");
+				if (customEvent) {
+					Reveal.dispatchEvent(customEvent, { fragment: current });	
+				}
+			});
+
+			Reveal.addEventListener('fragmenthidden', function(ev) {
+				var current = ev.fragment;
+
+				// activate previous fragment automatically
+				var autoFragment = current.getAttribute("data-next-fragment");
+				if (autoFragment) {
+					setTimeout(Reveal.previousFragment, autoFragment);
+				}
+			});
+
+			Reveal.addEventListener("noSpaceLeft", function(ev) {
+				setTimeout(function() {
+					var servers = document.querySelectorAll(".server");
+					for (var i = 0; i < servers.length; i++) {
+						servers[i].classList.add("large");
+					}
+				}, 2000);
+			});
+
+			var mapred = function(line) {
+				var cells = document.querySelectorAll("#mapred-2 .server .cell:not(.pre-filter):nth-of-type(" + line + ") span");
+				for (var i = 0; i < cells.length; i++) {
+					if (["A", "E", "I", "O", "U", "Y"].indexOf(cells[i].innerHTML) > -1) {
+						cells[i].parentNode.parentNode.querySelector(".post-filter").appendChild(cells[i].cloneNode(true));
+					}
+					cells[i].classList.toggle("current");
+				}
+			}
+
+			Reveal.addEventListener("mapred-2-map1", function(ev) {mapred(1);});
+			Reveal.addEventListener("mapred-2-map2", function(ev) {mapred(2);});
+			Reveal.addEventListener("mapred-2-map3", function(ev) {mapred(3);});
+			Reveal.addEventListener("mapred-2-map4", function(ev) {mapred(4);});
+			Reveal.addEventListener("mapred-2-reduce1", function(ev) {
+				var nodes = ev.fragment.querySelectorAll("span");
+				for (var i = 0; i < nodes.length; i++) {
+					document.querySelector("#mapred-2 .s0 .pre-filter").appendChild(nodes[i].cloneNode(true));
+					nodes[i].classList.add("current");
+				}
+			});
+			Reveal.addEventListener("mapred-2-reduce2", function(ev) {
+				var nodes = document.querySelectorAll("#mapred-2 .s0 .pre-filter span");
+				for (var i = 0; i < nodes.length; i++) {
+					if (document.querySelector("#mapred-2 .s0 .post-filter").innerHTML.indexOf(nodes[i].innerHTML) === -1) {
+						document.querySelector("#mapred-2 .s0 .post-filter").appendChild(nodes[i]);
+					}
+					else {
+						nodes[i].remove();
+					}
+				}
+			});
+		   
+		</script>
+
+	</body>
+</html>
